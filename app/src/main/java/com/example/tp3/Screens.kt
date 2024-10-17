@@ -9,7 +9,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoginScreen(onLogin: (String, String) -> Unit) {
+fun LoginScreen(onLogin: (String, String) -> Unit,
+                onNavigateToSignUp: () -> Unit,
+                onNavigateToResetPassword: () -> Unit
+) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
@@ -54,11 +57,27 @@ fun LoginScreen(onLogin: (String, String) -> Unit) {
         if (errorMessage.isNotEmpty()) {
             Text(text = errorMessage, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(top = 8.dp))
         }
+        TextButton(
+            onClick = onNavigateToSignUp,
+            modifier = Modifier.padding(top = 8.dp)
+        ) {
+            Text(text = "Créer un compte", color = MaterialTheme.colorScheme.primary)
+        }
+
+        TextButton(
+            onClick = onNavigateToResetPassword,
+            modifier = Modifier.padding(top = 8.dp)
+        ) {
+            Text(text = "Mot de passe oublié ?", color = MaterialTheme.colorScheme.primary)
+        }
     }
 }
 
 @Composable
-fun SignUpScreen(onSignUp: (String, String, String) -> Unit) {
+fun SignUpScreen(onSignUp: (String, String, String) -> Unit,
+                 onNavigateToLogin: () -> Unit
+
+) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -120,6 +139,12 @@ fun SignUpScreen(onSignUp: (String, String, String) -> Unit) {
         if (errorMessage.isNotEmpty()) {
             Text(text = errorMessage, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(top = 8.dp))
         }
+        TextButton(
+            onClick = onNavigateToLogin,
+            modifier = Modifier.padding(top = 8.dp)
+        ) {
+            Text(text = "Déjà un compte ? Se connecter", color = MaterialTheme.colorScheme.primary)
+        }
     }
 }
 
@@ -168,3 +193,5 @@ fun ResetPasswordScreen(onReset: (String) -> Unit) {
         }
     }
 }
+
+
