@@ -1,3 +1,4 @@
+// Screens.kt
 package com.example.tp3
 
 import androidx.compose.foundation.layout.*
@@ -11,8 +12,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun LoginScreen(onLogin: (String, String) -> Unit,
                 onNavigateToSignUp: () -> Unit,
-                onNavigateToResetPassword: () -> Unit
-) {
+                onNavigateToResetPassword: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
@@ -75,9 +75,7 @@ fun LoginScreen(onLogin: (String, String) -> Unit,
 
 @Composable
 fun SignUpScreen(onSignUp: (String, String, String) -> Unit,
-                 onNavigateToLogin: () -> Unit
-
-) {
+                 onNavigateToLogin: () -> Unit) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -193,5 +191,3 @@ fun ResetPasswordScreen(onReset: (String) -> Unit) {
         }
     }
 }
-
-
